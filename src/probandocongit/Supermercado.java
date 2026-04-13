@@ -22,7 +22,7 @@ public class Supermercado {
         String producto;
         int intentos = 3;
         boolean b = false;
-        float cantidad;
+        float cantidad = 0;
 
         supermercado.put("avena", 2.21);
         supermercado.put("garbanzos", 2.39);
@@ -40,15 +40,12 @@ public class Supermercado {
             producto = sc.next();
             System.out.println("");
             System.out.print("Cantidad: ");
-            cantidad = sc.nextFloat();
+           if(!producto.equals("fin")) cantidad = sc.nextFloat();
 
-            if (compra.containsKey(producto)) {
+            if (!compra.containsKey(producto)) {
 
                 compra.putIfAbsent(producto, cantidad);
-            } else if (compra.containsKey(producto)) {
-                System.out.println("Vuelva a intentarlo");
-
-                System.out.println("Producto  equivocado");
+       
             } else {
                 float cant = compra.get(producto);
                 cant++;
@@ -56,13 +53,16 @@ public class Supermercado {
                 compra.replace(producto, cant);
 
             }
-        } while (producto.equals("fin"));
+        } while (!producto.equals("fin"));
 
         System.out.println("Producto \t Precio \t cantidad \t");
         for (Map.Entry entry : compra.entrySet()) {
             System.out.print(entry.getKey());
             System.out.println("");
-            double i = compra.get("tomate") * supermercado.get("tomtate");
+            
+            if(compra.containsKey())
+            double i = (double) compra * supermercado.get(producto);
+            System.out.println(i );
 
         }
 
