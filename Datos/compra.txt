@@ -1,3 +1,4 @@
 tomate#2.0# 
 avena#2.0# 
-avena#1.0# 
+avena#1.0# tomate#2.0# 
+avena#2.0# 

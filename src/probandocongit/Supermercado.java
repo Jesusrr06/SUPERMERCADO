@@ -40,7 +40,7 @@ public class Supermercado {
                     guardardatosHashmap(o);
                     break;
                 case 3:
-                    cargarHashMap();
+                  o=  cargarHashMap();
                     break;
 
             }
@@ -106,7 +106,6 @@ public class Supermercado {
     public static void guardardatosHashmap(HashMap<String, Float> o) {
         Scanner sc = new Scanner(System.in);
         String info = "";
-        System.out.println("Sobreescribir");
 
         for (Map.Entry entry : o.entrySet()) {
             info += entry.getKey() + "#" + entry.getValue() + "# \n";
@@ -189,10 +188,10 @@ public class Supermercado {
         try {
             while (i < linea.length) {
                 unProducto = linea[i].split("#");
-                String[] producto = unProducto[0].split("#");
-                String[] cant = unProducto[1].split("#");
+                String producto = unProducto[0];
+                String cant = unProducto[1];
 
-                o.putIfAbsent(producto[i], Float.valueOf(cant[i]));
+                o.putIfAbsent(producto, Float.valueOf(cant));
 
                 i++;
             }
