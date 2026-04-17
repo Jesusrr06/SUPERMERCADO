@@ -6,6 +6,7 @@ package probandocongit;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -151,9 +152,13 @@ public class Supermercado {
     }
 
     public static String Cargarficherodetexto() {
-        Scanner sc = new Scanner(RUTA);
-        String datos = "";
-        try {
+        Scanner sc = null;
+                 String datos = "";
+   try {
+            File fichero = new File(RUTA);
+
+            System.out.println("Leyendo el contenido del fichero..........\n\n");
+            sc = new Scanner(fichero);
             while (sc.hasNextLine()) {
                 String linea = sc.nextLine();
                 datos += linea + "\n";
@@ -179,24 +184,24 @@ public class Supermercado {
         HashMap<String, Float> o = new HashMap<>();
         String datos = Cargarficherodetexto();
         String[] linea = datos.split("\n");
-        String[] unProducto= null;
+        String[] unProducto = null;
         int i = 0;
         try {
             while (i < linea.length) {
                 unProducto = linea[i].split("#");
                 String[] producto = unProducto[0].split("#");
                 String[] cant = unProducto[1].split("#");
-                
+
                 o.putIfAbsent(producto[i], Float.valueOf(cant[i]));
-                
+
                 i++;
             }
-           
-        }catch(Error e) {
+
+        } catch (Error e) {
             System.out.println(e.getMessage());
             return o;
         }
- return o;
+        return o;
     }
 
 }
